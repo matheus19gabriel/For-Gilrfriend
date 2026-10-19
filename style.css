@@ -1,0 +1,112 @@
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.btn-cursor,
+.btn-borda {
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+}
+
+.camada,
+.corte {
+  position: absolute;
+  inset: 0;
+}
+.corte {
+  overflow: hidden;
+  border-radius: 9999px;
+}
+.desfoque { filter: blur(16px); }
+
+/* ===== SIM: brilho que segue o cursor ===== */
+.blob {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  aspect-ratio: 3;
+  border-radius: 100%;
+  background: #f60;
+  pointer-events: none;
+  transform: translateX(-50%) scale(0);
+}
+
+.brilho {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  height: 100%;
+  aspect-ratio: 4;
+  border-radius: 9999px;
+  pointer-events: none;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at center, #fa9, #f50 40%, transparent 80%);
+}
+
+.fundo-claro {
+  border-radius: 9999px;
+  background: #bbb;
+  mix-blend-mode: screen;
+}
+
+.btn-cursor .btn-texto {
+  position: relative;
+  z-index: 10;
+  display: block;
+  padding: 12px clamp(28px, 8vw, 96px);
+  font-size: 14px;
+  font-weight: 700;
+  color: black;
+}
+
+/* ===== NÃO: borda escura com luz laranja ===== */
+.barra {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  height: 100%;
+  aspect-ratio: 4;
+  pointer-events: none;
+  transform: translateX(50%);
+  background: linear-gradient(90deg, #f60, #f60, #0000);
+}
+
+.borda {
+  border: 2px solid #333;
+  border-radius: 9999px;
+  mix-blend-mode: screen;
+  transition: border-color 0.2s;
+}
+.btn-borda:hover .borda { border-color: #444; }
+
+.fundo-escuro {
+  margin: 2px;
+  border-radius: 9999px;
+  background: #000b;
+  mix-blend-mode: multiply;
+}
+
+.btn-borda .btn-texto {
+  position: relative;
+  z-index: 10;
+  display: block;
+  margin: 8px;
+  padding: 12px clamp(28px, 8vw, 96px);
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+}
+
